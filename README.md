@@ -1,6 +1,6 @@
 # demo_Pokemon_Battler__Web
 
-A web app that builds two Pokémon with random characteristics to battle at the user's interaction. Utilizes data from [The RESTful Pokémon API](https://pokeapi.co/) created by Paul Hallet.
+A web app that at the user's command builds two Pokémon with random characteristics to oppose each other. Utilizes data from [The RESTful Pokémon API](https://pokeapi.co/) created by Paul Hallet.
 <!---
 Features:
 
