@@ -28,15 +28,17 @@ const handleError = (error, msgStr, url, id) => {
   console.log(msgStr, error, ' Trying again');
 }
 
-const randomNumGen = (max) => {
-  return Math.floor(Math.random() * max) + 1
+const genRandomNum = (max) => { /* MIN: 1 inclusive, MAX: inclusive */
+  return Math.floor(Math.random() * max) + 1;
 }
 
 const getAPIData = async (url, id) => {
   try {
-    let response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonObj.id}/`);
-} catch (err) {
-  handleError(err, 'getError: ', url, id);
+    let response = await axios.get(`https://${url}${id}/`);
+    return response.data;
+  } catch (err) {
+    handleError(err, 'getError: ', url, id);
+  }
 }
 
 const get4RandomMoves = async (dataMon) => {
@@ -66,25 +68,23 @@ const getMovesData = async (linksArray) => {
 
 
 const buildAPokemon = async () => {
-  try {
-    let pokemonObj = {
-      id: randomNumGen(151),
-      moveLinksObj: {},
-      moves: []
+    let monsterObj = {
+      id: genRandomNum(151),
+      moves: [],
+      moveLinksObj: {}
     };
-    
-    pokemonObj['name'] = response.data.name;
-    pokemonObj['avatarURL'] = response.data.sprites.front_default;
-    pokemonObj['baseHP'] = response.data.stats[5].base_stat;
-    while (Object.values(pokemonObj.moveLinksObj).length < 4) {
-      let thisMoveIndex = randomNumGen(response.data.moves.length - 1);
-      pokemonObj.moveLinksObj[thisMoveIndex] = response.data.moves[thisMoveIndex].move.url;
-    } 
-    pokemonObj.moves = await getMovesData(Object.values(pokemonObj.moveLinksObj));
-    return pokemonObj;
-  } catch (err) {
-    handleError(err);
-  }
+    let monsterData = await getAPIData('pokeapi.co/api/v2/pokemon/', monsterObj.id);
+    console.log(monsterData);
+
+    // monsterObj['name'] = response.data.name;
+    // monsterObj['avatarURL'] = response.data.sprites.front_default;
+    // monsterObj['baseHP'] = response.data.stats[5].base_stat;
+    // while (Object.values(monsterObj.moveLinksObj).length < 4) {
+    //   let thisMoveIndex = genRandomNum(response.data.moves.length - 1);
+    //   monsterObj.moveLinksObj[thisMoveIndex] = response.data.moves[thisMoveIndex].move.url;
+    // } 
+    // monsterObj.moves = await getMovesData(Object.values(monsterObj.moveLinksObj));
+    // return monsterObj;
 }
 
 const makeCard = async (side) => {
@@ -144,6 +144,6 @@ const getPokemon = async () => {
   console.log('drawTime: ', (Date.now() - start));
 }
 
-const battlePokemon = () => {
+// const battlePokemon = () => {
 
-}
+// }
