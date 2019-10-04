@@ -1,7 +1,6 @@
 # demo_Pokemon_Battler__Web
 
-A web app where the user at the press of a button builds two Pokémon with random characteristics to oppose each other. 
-Then, at the click of another button, have the two pokemon battle for a winner and the history gets logged. 
+A web app where the user clicks a button to build two Pokémon with random characteristics to face against each other. The user, clicking another button, can then a winner between the two computed and that battle gets logged, winner defeating loser. 
 
 Utilizes data from [The RESTful Pokémon API](https://pokeapi.co/) created by Paul Hallet.
 <!---
