@@ -73,7 +73,7 @@ body {
 div#base-grid {
   display: grid;
   grid-template-columns: 100vw;
-  grid-template-rows: 58px 130px auto 95px 55px;
+  grid-template-rows: 58px 130px min-content auto 55px;
 }
 
 h1 {
@@ -150,7 +150,7 @@ div.pokemoncard {
 
   width: 220px;
   height: auto;
-  margin: 0 auto;
+  margin: 0 auto 24px auto;
   text-align: center;
   padding: 12px;
   background-color: #fff;
